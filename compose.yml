@@ -1,0 +1,21 @@
+version: '3.9'
+
+x-common: &common
+  image: oshpalov/locust-learning:${DOCKER_TAG:-latest}
+  environment:
+    - LOCUST_HOST=${LOCUST_HOST}
+    - LOCUST_RUN_TIME=${LOCUST_RUN_TIME:-5m}
+
+
+services:
+  master:
+    <<: *common
+    ports:
+      - "8089:8089"
+    command: --master
+
+  worker:
+    <<: *common
+    deploy:
+      mode: global
+    command: --worker --master-host master

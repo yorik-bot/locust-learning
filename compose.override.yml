@@ -1,0 +1,10 @@
+services:
+  master:
+    build: .
+    volumes:
+      - .:/locust
+
+  worker:
+    build: .
+    volumes:
+      - .:/locust
