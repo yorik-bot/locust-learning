@@ -48,7 +48,7 @@ class ExampleUser(HttpUser):
     @task
     def example_task(self):
         # В зависимости от метода запроса, создаем переменную request, которая будет содержать функцию для отправки запроса.
-        # Если метод POST, то используем метод post, иначе get.
+        # Если метод POST, то используем метод post, иначе get
         if self.environment.parsed_options.method == "POST":
             request = self.client.post
         else:
